@@ -6,13 +6,13 @@ using namespace std;
 
 int main()
 {
-    int secret, guess, difference, bestGuess;
+    int secret, guess, difference, bestGuess, lastBestGuess;
 
     //Generate random number
     srand(time(0));
     secret = 1 + rand() % 100;
 
-    cout << "SPOILER ALERT: " << secret << endl << endl;
+    //cout << "SPOILER ALERT: " << secret << endl << endl;
 
     //Explain the rules of the game
     cout << "Guess the secret number!" << endl;
@@ -31,6 +31,7 @@ int main()
         if (difference < bestGuess)
         {
             cout << "This is the best guess so far." << endl;
+            lastBestGuess = guess;
             bestGuess = difference;
         }
 
@@ -40,7 +41,7 @@ int main()
     }
 
     cout << endl << "The secret number was " << secret << endl
-         << "The best guess was " << guess << endl;
+         << "The best guess was " << lastBestGuess << endl;
 
     return 0;
 }
