@@ -12,17 +12,54 @@ struct Movie
 
 void inputData(Movie & movieP)
 {
-    cout << "TODO: inputData" << endl;
+    char moreActors;
+    int actorNum = 0;
+
+    cout << "Enter Movie Title: ";
+    getline(cin, movieP.title, '\n');
+    cout << "Enter Movie Director: ";
+    getline(cin, movieP.director, '\n');
+    cout << "Enter the year the movie was made: ";
+    cin >> movieP.year;
+    do
+    {
+        cout << "Enter actor " << actorNum + 1 << ": ";
+        cin.get();
+        getline(cin, movieP.actors[actorNum], '\n');
+        actorNum++;
+        if(actorNum < NUM_ACTORS)
+        {
+            cout << "Are there more actors? (Y,N) ";
+            cin >> moreActors;
+        }
+
+    }while((moreActors == 'Y' || moreActors == 'y') && actorNum < NUM_ACTORS);
+
 }
 
 void displayData(const Movie movieP)
 {
-    cout << "TODO: displayData" << endl;
+    cout << endl
+         << "Movie Info" << endl
+         << "==========" << endl
+         << "Title: " << movieP.title
+         << endl
+         << "Director: " << movieP.director << endl
+         << "Year: " << movieP.year << endl
+         << "Actors: " << endl;
+    for (int i = 0; i < NUM_ACTORS; i++)
+        cout << '\t' << movieP.actors[i] << endl;
+    cout << endl;
 }
 
 bool directorActor(const Movie movieP)
 {
-    cout << "TODO: directorActor" << endl;
+    for (int i = 0; i < NUM_ACTORS; i++)
+    {
+        if (movieP.actors[i] == movieP.director)
+            return true;
+    }
+
     return false;
 }
 
