@@ -9,7 +9,7 @@ int main()
     cout << "Enter a word: ";
     cin >> word;
 
-    for (int i = word.size() - 1; i >=0; i--)
+    for (int i = word.size() - 1; i >= 0; i--)
         reverse += word[i];
 
     if (word == reverse)
